@@ -5,7 +5,7 @@
 
 live demo 
 
-printedtshirt84.netlify.app
+https://printedtshirt84.netlify.app/
 
 
 
