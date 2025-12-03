@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PrintWear — Custom Printed T-Shirts & Hoodies</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ============================================
+   STREETWEAR THEME
+============================================ */
+:root {
+  --primary: #D67228;      /* Burnt Orange */
+  --accent: #1CA697;       /* Teal Green */
+  --bg: #F5EDE2;           /* Cream */
+  --card: #F3E8D7;         /* Soft Beige */
+  --text: #1C1C1C;         /* Charcoal */
+  --shadow: rgba(0,0,0,0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* NAVBAR */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 64px;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  font-weight: 600;
+  justify-content: space-between;
+}
+
+nav a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* HERO */
+.hero-img-wrap {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-img-wrap img {
+  width: 100%;
+  max-width: 750px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow);
+  object-fit: cover;
+}
+
+.hero {
+  padding: 70px 20px;
+  background: linear-gradient(120deg, #D67228, #F5EDE2);
+  color: var(--text);
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+.btn-primary {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* PRODUCT GRID */
+.section-title {
+  font-size: 1.8rem;
+  margin: 40px 0 20px;
+  text-align: center;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  padding: 10px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+  background: var(--card);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #E3D3C0;
+  box-shadow: 0 5px 20px var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-media img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.card-sub {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.card-foot {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.buy {
+  padding: 8px 15px;
+  background: var(--accent);
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* ABOUT */
+.about {
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px var(--shadow);
+}
+
+/* MAP */
+.map-wrap {
+  width: 100%;
+  height: 350px;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* FLOATING BUTTONS */
+.floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 50;
+}
+
+.fab-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.fab-wrap:hover .fab-label {
+  transform: translateX(-10px);
+  opacity: 1;
+}
+
+.fab-label {
+  background: var(--primary);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.9;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.fab {
+  width: 48px;
+  height: 48px;
+  background: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+
+.whatsapp-float {
+  width: 48px;
+  height: 48px;
+  background-color: #25D366; /* WhatsApp green */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  background: var(--primary);
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div>PrintWear</div>
+  <div>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#map">Find Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h2>Premium Custom T-Shirts & Hoodies</h2>
+  <p>High-quality prints, soft fabrics, long-lasting colors — perfect for daily wear, events, groups & gifting.</p>
+  <button class="btn-primary">Shop Now</button>
+
+  <div class="hero-img-wrap">
+    <img src="model1.png" alt="Model wearing t-shirt">
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<!-- PRODUCTS -->
+<h3 class="section-title" id="products">Featured Collection (T-Shirts & Hoodies)</h3>
+
+<section class="grid">
+
+  <!-- ========== PRODUCT 1 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Rhythmic Skull Tee</div>
+        <div class="card-sub">Soft cotton • Unisex • Premium print</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹499</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 2 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed1.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Veirdo Classic Tee</div>
+        <div class="card-sub">Comfort stretch fabric • Durable print</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹599</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 3 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed2.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Vintage Logo Tee</div>
+        <div class="card-sub">Retro print • Washed finish</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹499</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 4 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed3.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Classic Zip Hoodie</div>
+        <div class="card-sub">Comfy fleece • Warm & soft</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹1299</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 5 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed4.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Graphic Statement Tee</div>
+        <div class="card-sub">Eye-catching print • Lightweight</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹549</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 6 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed5.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Pullover Hoodie</div>
+        <div class="card-sub">Cozy fit • Screen print</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹1199</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 7 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed6.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Minimal Logo Tee</div>
+        <div class="card-sub">Soft touch • Minimalist design</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹449</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 8 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed7.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Abstract Print Tee</div>
+        <div class="card-sub">Vivid colors • Long-lasting print</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹599</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 9 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed8.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Oversized Hoodie</div>
+        <div class="card-sub">Street style • Heavy fleece</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹1399</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 10 =========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed9.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">College Print Tee</div>
+        <div class="card-sub">Durable • Machine wash safe</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹499</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 11 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Fleece Hoodie</div>
+        <div class="card-sub">Warm • Soft inner fleece</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹1299</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 12 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="printed10.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Sporty Tee</div>
+        <div class="card-sub">Breathable fabric • Athletic cut</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹549</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 13 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="model2.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Eco Cotton Tee</div>
+        <div class="card-sub">Sustainably sourced cotton</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹699</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 14 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="model3.jpg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Limited Edition Hoodie</div>
+        <div class="card-sub">Exclusive prints • Small run</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹1599</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT 15 ========== -->
+  <div class="card">
+    <div class="card-media"><img src="model.jpeg" alt=""></div>
+    <div class="card-body">
+      <div>
+        <div class="card-title">Custom Photo Tee</div>
+        <div class="card-sub">Upload your design • Premium finish</div>
+      </div>
+      <div class="card-foot">
+        <div class="price">₹799</div>
+        <button class="buy">Order</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<h3 class="section-title" id="about">About PrintWear</h3>
+<div class="about">
+  <p><strong>PrintWear</strong> is a small-batch print studio offering high-quality printed t-shirts and hoodies. We use fade-resistant inks and premium fabrics to ensure your design looks great wash after wash. From single custom prints to bulk orders for events — we craft every piece with care.</p>
+</div>
+
+<!-- MAP -->
+<h3 class="section-title" id="map">Find Us</h3>
+<div class="map-wrap">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3778.3130915035204!2d75.304063!3d18.739546999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc4b9f8aab6b8f9%3A0xa8d119be9990f54!2sAryan%20Tyres!5e0!3m2!1sen!2sin!4v1764760865300!5m2!1sen!2sin" loading="lazy"></iframe>
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating">
+  <!-- WhatsApp -->
+  <a class="fab-wrap" href="https://wa.me/8459260325?text=Hello%20PrintWear" target="_blank">
+    <span class="fab-label">Chat on WhatsApp</span>
+    <div class="whatsapp-float"><i class="fab fa-whatsapp"></i></div>
+  </a>
+
+  <!-- Call -->
+  <a class="fab-wrap" href="tel:8459260325">
+    <span class="fab-label">Call Us</span>
+    <div class="fab">📞</div>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © PrintWear • Custom Prints • Call: 8459260325 • Made with ❤️
+</footer>
+
+<!-- JS for "Order" button -->
+<script>
+document.querySelectorAll('.buy').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const card = e.currentTarget.closest('.card');
+    const title = card.querySelector('.card-title').innerText;
+    const price = card.querySelector('.price').innerText;
+    const msg = encodeURIComponent(`Hello! I want to order: ${title} (${price})`);
+    window.open(`https://wa.me/8459260325?text=${msg}`, '_blank');
+  });
+});
+</script>
+
+</body>
+</html>
